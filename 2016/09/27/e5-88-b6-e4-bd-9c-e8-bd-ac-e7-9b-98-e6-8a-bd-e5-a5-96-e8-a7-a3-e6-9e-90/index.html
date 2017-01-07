@@ -3,14 +3,30 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hexo</title>
+  <title>制作转盘抽奖解析 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://wwm.ufor.bid/index.html">
+  <meta name="description" content="之前没有做过转盘抽奖，在网上搜了相关的资料，看到大部分都是推荐使用JQuery插件awardRotate实现的。但是我又觉得使用单纯的JS去实现应该也不难。于是做了有插件的版本和使用JS 实现的版本。
+一、JS实现首先先上使用JS 实现的代码和效果:
+
+
+根据效果我们可以大体的意识到，其实真正的原理是利用CSS3里transform中的旋转效果（rotate），根据转盘转动一点点改变角度这样的动画">
+<meta property="og:type" content="article">
+<meta property="og:title" content="制作转盘抽奖解析">
+<meta property="og:url" content="http://wwm.ufor.bid/2016/09/27/e5-88-b6-e4-bd-9c-e8-bd-ac-e7-9b-98-e6-8a-bd-e5-a5-96-e8-a7-a3-e6-9e-90/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="之前没有做过转盘抽奖，在网上搜了相关的资料，看到大部分都是推荐使用JQuery插件awardRotate实现的。但是我又觉得使用单纯的JS去实现应该也不难。于是做了有插件的版本和使用JS 实现的版本。
+一、JS实现首先先上使用JS 实现的代码和效果:
+
+
+根据效果我们可以大体的意识到，其实真正的原理是利用CSS3里transform中的旋转效果（rotate），根据转盘转动一点点改变角度这样的动画">
+<meta property="og:updated_time" content="2017-01-07T15:33:26.867Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="制作转盘抽奖解析">
+<meta name="twitter:description" content="之前没有做过转盘抽奖，在网上搜了相关的资料，看到大部分都是推荐使用JQuery插件awardRotate实现的。但是我又觉得使用单纯的JS去实现应该也不难。于是做了有插件的版本和使用JS 实现的版本。
+一、JS实现首先先上使用JS 实现的代码和效果:
+
+
+根据效果我们可以大体的意识到，其实真正的原理是利用CSS3里transform中的旋转效果（rotate），根据转盘转动一点点改变角度这样的动画">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -59,54 +75,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/07/hello-world/" class="article-date">
-  <time datetime="2017-01-07T14:31:02.197Z" itemprop="datePublished">2017-01-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/07/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://wwm.ufor.bid/2017/01/07/hello-world/" data-id="cixne4zcg000dr8uj4t0acip6" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-e5-88-b6-e4-bd-9c-e8-bd-ac-e7-9b-98-e6-8a-bd-e5-a5-96-e8-a7-a3-e6-9e-90" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-e5-88-b6-e4-bd-9c-e8-bd-ac-e7-9b-98-e6-8a-bd-e5-a5-96-e8-a7-a3-e6-9e-90" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/09/27/e5-88-b6-e4-bd-9c-e8-bd-ac-e7-9b-98-e6-8a-bd-e5-a5-96-e8-a7-a3-e6-9e-90/" class="article-date">
   <time datetime="2016-09-27T02:33:17.000Z" itemprop="datePublished">2016-09-27</time>
@@ -123,8 +92,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/27/e5-88-b6-e4-bd-9c-e8-bd-ac-e7-9b-98-e6-8a-bd-e5-a5-96-e8-a7-a3-e6-9e-90/">制作转盘抽奖解析</a>
+    <h1 class="article-title" itemprop="name">
+      制作转盘抽奖解析
     </h1>
   
 
@@ -260,183 +229,28 @@ if (turnplate.deg &amp;amp;lt; angles+1800) {
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-e5-88-b6-e4-bd-9c-e5-bc-b9-e5-87-ba-e5-b1-82-e7-ae-80-e5-8d-95-e4-b8-8b-e6-8b-89-e7-bf-bb-e9-a1-b5-e7-80-91-e5-b8-83-e6-b5-81-e5-b8-83-e5-b1-80-e7-9a-84-e6-80-9d-e8-b7-af" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/09/23/e5-88-b6-e4-bd-9c-e5-bc-b9-e5-87-ba-e5-b1-82-e7-ae-80-e5-8d-95-e4-b8-8b-e6-8b-89-e7-bf-bb-e9-a1-b5-e7-80-91-e5-b8-83-e6-b5-81-e5-b8-83-e5-b1-80-e7-9a-84-e6-80-9d-e8-b7-af/" class="article-date">
-  <time datetime="2016-09-23T00:03:58.000Z" itemprop="datePublished">2016-09-23</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/js实现基础控件效果/">js实现基础控件效果</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+    <a href="/2017/01/07/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
         
+          Hello World
+        
+      </div>
+    </a>
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/23/e5-88-b6-e4-bd-9c-e5-bc-b9-e5-87-ba-e5-b1-82-e7-ae-80-e5-8d-95-e4-b8-8b-e6-8b-89-e7-bf-bb-e9-a1-b5-e7-80-91-e5-b8-83-e6-b5-81-e5-b8-83-e5-b1-80-e7-9a-84-e6-80-9d-e8-b7-af/">制作弹出层/简单下拉翻页/瀑布流布局/css3照片墙的思路</a>
-    </h1>
   
+    <a href="/2016/09/23/e5-88-b6-e4-bd-9c-e5-bc-b9-e5-87-ba-e5-b1-82-e7-ae-80-e5-8d-95-e4-b8-8b-e6-8b-89-e7-bf-bb-e9-a1-b5-e7-80-91-e5-b8-83-e6-b5-81-e5-b8-83-e5-b1-80-e7-9a-84-e6-80-9d-e8-b7-af/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">制作弹出层/简单下拉翻页/瀑布流布局/css3照片墙的思路</div>
+    </a>
+  
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="一、弹出层"><a href="#一、弹出层" class="headerlink" title="一、弹出层"></a>一、弹出层</h1><p><strong>设计思路为：</strong></p>
-<ol>
-<li>定义一个空的div作为遮罩的那层蒙版。颜色一般为黑色或灰色，设置透明度。宽高均为100%；定位可以为绝对定位或者fixed定位。有一点尤其重要即设置其<strong>z-index</strong>一定要比页面中普通元素高。才能不让底下非弹出层元素在弹出层弹出时被误点。html代码如：<br><pre class=" language-javascript">&lt;div class=”layer” id=”layer”&gt;&lt;/div&gt;</pre><br>css样式如：</li>
-</ol>
-<pre class=" language-javascript">.layer { display: none; position: fixed; width: 100%; height: 100%;background: rgba(0, 0, 0, 0.73); top: 0; left: 0; z-index: 30;}</pre>
-
-<ol>
-<li>定义弹出层。弹出层根据需要自定义内容。弹出层的定位可以为绝对定位或者fixed定     位。用fix定位时可以避免拖动纵向滚动条时，弹出层被滚走。弹出层的z-index要和蒙     版相同或者比蒙版还高。<br>相关的JS代码：点击元素将蒙版和弹出层同时设置display为可见（block）的属性，当点击蒙版时将蒙版和弹出层同时设置display为不可见（none）的属性。若要实现弹出层 弹出时，底部页面的元素不能被滚动，则需设置html,body的overflow属性为hidden.     当弹出层被隐藏时，再将其恢复到原先的值。示例代码如：<pre class=" language-javascript">function openDialog() {
-$('#layer, #dialog').show();
-$('html,body').css('overflow','hidden');
-}
-function closeDialog() {
-$('#layer, #dialog').hide();
-$('html,body').css('overflow','auto');
-}
-$('.open-dialog').on('click',openDialog);
-$('#layer').on('click',closeDialog);</pre>
-
-</li>
-</ol>
-<hr>
-<h1 id="二、简单下拉翻页"><a href="#二、简单下拉翻页" class="headerlink" title="二、简单下拉翻页"></a>二、简单下拉翻页</h1><p>&nbsp;</p>
-<p><strong>设计思路为：</strong></p>
-<ol>
-<li><p>首先想到的是绑定window的scroll事件，通过判断被滚走的高度（scrollTop）与浏览器窗口的高度相加是否等于整个滚动视图的高度由此判断是否滑动到底部，触发了底部跳转。具体代码如下:</p>
-<pre class=" language-javascript">$(window).on('scroll',function(){
-var scrollTop = document.body.scrollTop;
-var scrollHeight = document.body.scrollHeight;
-var windowHeight =document.body.clientHeight;
-if (scrollTop + windowHeight == scrollHeight) { //判断是否拉到了页面最底部
-    window.location.href="nextPage.html";
-}
-})</pre>
-</li>
-<li><p>但是后来发现由于这是要绑定滚动事件的，但是在手机端内容仅有一页无法出现滚动条的情况下，即当滚动高度scrollTop为0的情况下无法判断滑动底部进行跳转。于是借助了手机端固有的touchstart和touchend事件，去获取touchStart触屏时手在页面上y轴的位置startY和touchEnd即手离开页面时y轴的的位置endY，通过endY-startY&lt;0的方式去判断上拉的这个操作，然后再判断scrollTop为0和不为0滑到底部的情况去进行上拉跳转。具体代码为：<br><pre class=" language-javascript">function load() {<br>document.addEventListener(‘touchstart’,touchStart,false);<br>document.addEventListener(‘touchend’,touchEnd,false);<br>var startY,endY;<br>function touchStart(event) {</pre></p>
-<pre><code>var touch = event.touches[0];
-startY = touch.pageY;
-</code></pre><p>}<br>function touchEnd(event) {</p>
-<pre><code>var touch = event.changedTouches[0];
-endY = touch.pageY;
-setTimeout(function () {
-    if (endY - startY &amp;lt;= 0) { 
-        var scrollTop = document.body.scrollTop;
-        var scrollHeight = document.body.scrollHeight;
-</code></pre><p>　　           var windowHeight =document.body.clientHeight;</p>
-<pre><code>        if (scrollTop == 0) { //当触发了上拉却没有滚动，说明不存在滚动条
-            window.location.href=&quot;nextPage.html&quot;;
-        }else if (scrollTop + windowHeight == scrollHeight) {
-            window.location.href=&quot;nextPage.html&quot;;
-        }
-    }
-},0);
-</code></pre><p>}<br>}<br>window.addEventListener(‘load’,load,false);<br><strong><strong>注：此方法有局限，局限在页面为手机端页面且仅存在图片、触摸操作仅为下拉翻页的情况下使用。</strong></strong></p>
-</li>
-</ol>
-<hr>
-<h1 id="三、瀑布流布局"><a href="#三、瀑布流布局" class="headerlink" title="三、瀑布流布局"></a>三、瀑布流布局</h1><p><strong>JS设计思路为：</strong></p>
-<ol>
-<li>所有数据块的宽度相等，高度不等。</li>
-<li>除了第一行元素的排列不用绝对定位之外，其他的都要绝对定位，<br>并且每一个都要动态的定位在所有列中最短即高度最小的那一列后面：<br>具体的实现方法是：定义一个存放所有列的高度的数组。<br>然后找出高度数值最小的那一列，将下一个要定位的数据块定位在那一列之末。<br>即定位的top为最小的列的数值，定位的left为那一列的列数索引乘上每个盒子的宽度，最后更新高度数组的数据。</li>
-<li>当页面开始滚动时，滚动到一定的位置开始加载新的数据块，创建新的DOM节点。达到瀑布流无限滚动<br>实现方法为：当最后一块数据块的中心与父盒子的顶部的距离小于被父盒子被滚走的高度加上浏览器窗口的高度时，开始加载数据块。通俗来说，就是当露出最后一块中心时就可以加载数据块并将新的内容进行布局了。这里代码量较大，就不贴详细的代码了。</li>
-</ol>
-<h1 id="四、CSS3简易照片墙"><a href="#四、CSS3简易照片墙" class="headerlink" title="四、CSS3简易照片墙"></a>四、CSS3简易照片墙</h1><p>先上重要代码：</p>
-<p><strong><em>html：</em></strong></p>
-<pre class=" language-javascript">&lt;div class="rel container"&gt;
-    &lt;img src="images/1.jpeg" class="img img1"&gt;
-    &lt;img src="images/2.jpeg" alt="" class="img img2"&gt;
-    &lt;!--下面是其他图片....--&gt;
-&lt;/div&gt;</pre>
-**_css：_**
-<pre class=" language-javascript">.container{
-    position: relative;
-    width: 1000px;
-    height: 600px;
-    margin:100px auto;
-}
-.container .img{
-     position: absolute;
-     width: 360px;
-     height: 240px;
-     padding: 10px 10px 15px;
-     left: 50%; 
-     top: 50%; 
-     margin-left: -180px;
-     margin-top: -120px;
-     background: #fff;
-     border:1px solid #ddd;
-     **box-shadow:2px 2px 10px rgba(0, 0, 0, 0.4);**
-**     transition: all .4s ease-in;**
-**     -webkit-transition: all .4s ease-in;**
-**     -moz-transition: all .4s ease-in;**
- }
- .container .img:hover{
-     z-index: 99;
-     box-shadow: 20px 20px 30px rgba(0,0,0,0.4);
-     transform: translate(0,0) rotate(0deg) scale(1.2);
-     -webkit-transform: translate(0,0) rotate(0deg) scale(1.2);
-     -moz-transform: translate(0,0) rotate(0deg) scale(1.2);
- }
- .img1{
-     -webkit-transform: translate(50px,-150px) rotate(-10deg); 
-     -moz-transform: translate(50px,-150px) rotate(-10deg); 
-     transform: translate(50px,-150px) rotate(-10deg); 
- }</pre>
-
-<ol>
-<li>照片墙所有的照片被一个容器包裹，此容器相对定位，每张照片绝对定位。</li>
-<li>所有的照片都仅有初始位置和初始角度不同，其余的都相同。相同的写在同个class中，给每张照片定义不同的className来设置不同的样式。所有照片移上去的动画效果等也是相同的（hover）。<strong>在此要特别需要注意一点，通过translate(0,0);这种方式去设置每个照片的位置而不是left,top,right,bottom，可以开启动画效果加速，防止改变传统的left,top值中引起的一些抖动和不流畅 。</strong></li>
-<li><p>可以通过box-shadow设置阴影效果，使照片更为立体。</p>
-<pre class=" language-javascript">box<span class="pun">-</span><span class="pln">shadow</span><span class="pun">:</span><span class="pln"> h</span><span class="pun">-</span><span class="pln">shadow v</span><span class="pun">-</span><span class="pln">shadow blur spread color inset</span><span class="pun">;
-</span></pre>
-</li>
-<li><pre class=" language-javascript"><span class="pun">&gt; h-shadow 必需。水平阴影的位置。允许负值。
-&gt; v-shadow 必需。垂直阴影的位置。允许负值。 
-&gt; blur 可选。模糊距离。 
-&gt; spread 可选。阴影的尺寸。 
-&gt; color 可选。阴影的颜色。
-&gt; inset 可选。将外部阴影 (outset) 改为内部阴影。</span></pre></li>
-<li><p>通过transform去改变照片的缩放大小和旋转角度。例：</p>
-<pre class=" language-javascript">transform：scale(1.5) rotate(45deg)
-/*放大1.5倍，顺时针旋转45度*/
-/*rotate（Xdeg），顺时针X为+，逆时针X为-*/</pre>
-</li>
-<li><p>使用transtion来实现动画效果。transtion过渡效果会出现在属性变化的时候。</p>
-</li>
-<li><pre class=" language-javascript"><span class="pun">transition: property duration timing-function delay;</span></pre>
-</li>
-<li><p><pre class=" language-javascript">&gt; transition-property 规定设置过渡效果的 CSS 属性的名称。如果是all，就代表所有属性(必须)<br>&gt; transition-duration 规定完成过渡效果需要多少秒或毫秒。(必须，为0则没有过渡效果)<br>&gt; transition-timing-function 规定速度效果的速度曲线。<br>&gt; transition-delay 定义过渡效果何时开始。(没有则是立即开始)</pre><br>7. transform和transtion都需要注意浏览器兼容性：-webkit-、-moz-</p>
-</li>
-<li>z-index属性设置照片上下层叠放，其中img:hover里的z-index值要比img中大</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://wwm.ufor.bid/2016/09/23/e5-88-b6-e4-bd-9c-e5-bc-b9-e5-87-ba-e5-b1-82-e7-ae-80-e5-8d-95-e4-b8-8b-e6-8b-89-e7-bf-bb-e9-a1-b5-e7-80-91-e5-b8-83-e6-b5-81-e5-b8-83-e5-b1-80-e7-9a-84-e6-80-9d-e8-b7-af/" data-id="cixne4zcf0009r8uj40ubbax7" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端笔记/">前端笔记</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
-
-
-  
 
 </section>
         
