@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>微信小程序学习笔记 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="最近在着手小程序的项目，因为官方文档很多写的比较简略，所以在开发的时候还是踩了许多个坑，也更加了解小程序的一些特点，因此在这里记录一下我的浅薄学习，我的踩坑点以及目前的解决方法吧。
+1. 没有cookie由于之前也没特地关注这一点，所以一直到写登录操作的时候才发现小程序不支持cookie，而我们的登录之类的操作都是使用cookie进行信息携带和保存的。因此为了兼容原来使用cookie的这种模式，我">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信小程序学习笔记">
+<meta property="og:url" content="http://wwm.ufor.bid/2017/01/08/weixin-app/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="最近在着手小程序的项目，因为官方文档很多写的比较简略，所以在开发的时候还是踩了许多个坑，也更加了解小程序的一些特点，因此在这里记录一下我的浅薄学习，我的踩坑点以及目前的解决方法吧。
+1. 没有cookie由于之前也没特地关注这一点，所以一直到写登录操作的时候才发现小程序不支持cookie，而我们的登录之类的操作都是使用cookie进行信息携带和保存的。因此为了兼容原来使用cookie的这种模式，我">
+<meta property="og:image" content="http://img.aimoge.com/Fmz-A3UdV-3tCfPWj8EHURR-SSsK">
+<meta property="og:image" content="http://img.aimoge.com/Fq2IPclPbtncQipOYsUlyoIVZVrO">
+<meta property="og:updated_time" content="2017-01-09T15:03:06.192Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="微信小程序学习笔记">
+<meta name="twitter:description" content="最近在着手小程序的项目，因为官方文档很多写的比较简略，所以在开发的时候还是踩了许多个坑，也更加了解小程序的一些特点，因此在这里记录一下我的浅薄学习，我的踩坑点以及目前的解决方法吧。
+1. 没有cookie由于之前也没特地关注这一点，所以一直到写登录操作的时候才发现小程序不支持cookie，而我们的登录之类的操作都是使用cookie进行信息携带和保存的。因此为了兼容原来使用cookie的这种模式，我">
+<meta name="twitter:image" content="http://img.aimoge.com/Fmz-A3UdV-3tCfPWj8EHURR-SSsK">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://wwm.ufor.bid"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-weixin-app" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/08/weixin-app/" class="article-date">
+  <time datetime="2017-01-08T07:37:07.000Z" itemprop="datePublished">2017-01-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      微信小程序学习笔记
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近在着手小程序的项目，因为官方文档很多写的比较简略，所以在开发的时候还是踩了许多个坑，也更加了解小程序的一些特点，因此在这里记录一下我的浅薄学习，我的踩坑点以及目前的解决方法吧。</p>
+<h2 id="1-没有cookie"><a href="#1-没有cookie" class="headerlink" title="1. 没有cookie"></a>1. 没有cookie</h2><p>由于之前也没特地关注这一点，所以一直到写登录操作的时候才发现小程序不支持cookie，而我们的登录之类的操作都是使用cookie进行信息携带和保存的。因此为了兼容原来使用cookie的这种模式，我们自定义了wx.request的header,将原先放在cookie里的内容放在header里进行传递。</p>
+<h2 id="2-小程序不允许直接操作Dom"><a href="#2-小程序不允许直接操作Dom" class="headerlink" title="2. 小程序不允许直接操作Dom"></a>2. 小程序不允许直接操作Dom</h2><p>小程序本意是为了让开发者彻底脱离操作DOM,使开发者从操作DOM转向操作数据，因此没有提供像Jquery，或者普通JS直接操作DOM，获取DOM节点，生成DOM节点的方法，也不允许我们做一些类似addClass的动作了，但是我们可以通过数据和页面进行绑定，然后操作数据，改变数据从而改变页面。这也为开发者省去了很多繁琐的DOM操作。</p>
+<h2 id="3-事件参数传递"><a href="#3-事件参数传递" class="headerlink" title="3. 事件参数传递"></a>3. 事件参数传递</h2><p>在小程序里的事件绑定，如点击事件我们可以使用bindtap(会向上冒泡)，或者catchtap（阻止向上冒泡）,比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;view bindtap=&quot;handleClick&quot;&gt;test&lt;/view&gt;</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">handleClick: function(event)&#123;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>此点击的响应事件的参数是event，可以看到这种绑定方式要传参的话是没办法像以前一样使用onclick=”handleClick(‘param’)”这种方法的，好在小程序提供了可以在这个组件自定义data-*属性，接着使用响应事件中的event.currentTarget.dataset或者event.target.dataset获取,如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;view bindtap=&quot;handleClick&quot; data-test=&quot;1&quot;&gt;test&lt;/view&gt;</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">handleClick: function(event)&#123;</div><div class="line">    console.log(event.currentTarget.dataset)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在这里要说一下event.currentTarget和event.target的区别，先看个实例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;view bindtap=&quot;grandParentTap&quot; id=&quot;grandParentTap&quot; data-info=&quot;grandParentTap&quot;&gt;</div><div class="line">    &lt;view catchtap=&quot;parentTap&quot; id=&quot;parentTap&quot; data-info=&quot;parentTap&quot;&gt; </div><div class="line">        &lt;view bindtap=&quot;childTap&quot; id=&quot;childTap&quot; data-info=&quot;childTap&quot;&gt;</div><div class="line">            child</div><div class="line">        &lt;/view&gt;</div><div class="line">    &lt;/view&gt;</div><div class="line">&lt;/view&gt;</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">grandParentTap: function(event)&#123;</div><div class="line">    console.log(event)</div><div class="line">&#125;,</div><div class="line">parentTap: function(event)&#123;</div><div class="line">    console.log(event)</div><div class="line">&#125;,</div><div class="line">childTap: function(event)&#123;</div><div class="line">    console.log(event)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当我们点击child这个文字时，在控制台打印出来的结果是：</p>
+<p><img src="http://img.aimoge.com/Fmz-A3UdV-3tCfPWj8EHURR-SSsK" alt="点击child最后结果"></p>
+<p>可以看到这边只打出了两个event，因为parentTap是通过catchtap绑定的，所以阻止了冒泡，并没有触发到grandParentTap上。<br>我们展开这两个event对象，可以看到：</p>
+<p><img src="http://img.aimoge.com/Fq2IPclPbtncQipOYsUlyoIVZVrO" alt="展开输出信息"></p>
+<p>首先看到了childTap的event，可以看到currentTarget和target里的dataset，id都是它自己本身的id,和data-info,都为childTap。</p>
+<p>而看到parentTap的event时，我们可以看到currentTarget里的dataset,id是它自己本身的data-info,id,都为parentTap,而它的target显示的确是为childTap的data-info,id，为childTap。</p>
+<p>因此我们可以看出，event对象中的target是事件产生的源头组件，而currentTarget则是当前捕获这个事件的组件。理解清楚这个，对我们是使用target去获取data-*的内容，还是currentTarget去获取是很用帮助的。</p>
+<p>如果我们绑定事件的是整个大的父组件，自定义data也是设置在父组件，但是它包含了很多子组件，当我们点击某个子组件时，虽然能触发父组件的tap事件，但是这时候的target指向的是真正触发事件的子组件，里面的dataset就不是我们要获取的内容了，应该使用currentTarget去获取。</p>
+<h2 id="4-页面跳转及页面传参"><a href="#4-页面跳转及页面传参" class="headerlink" title="4. 页面跳转及页面传参"></a>4. 页面跳转及页面传参</h2><p>小程序的跳转方式用四种：wx.navigateTo(OBJECT)，wx.redirectTo(OBJECT)，wx.switchTab(OBJECT)，wx.navigateBack(OBJECT)。其中如果页面含有tabbar，只能用switchTab跳转到此页面。另外需要注意的是，wx.switchTab(OBJECT)，wx.navigateBack(OBJECT)是无法通过url传递参数的。而另外两种参数传递即普通的url带参方式：参数与路径之间使用?分隔，参数键与参数值用=相连，不同参数用&amp;分隔；如 ‘path?key=value&amp;key2=value2’即可。具体可以看开发文档。</p>
+<p>那我们要是想要通过wx.switchTab或者通过wx.navigateBack跳转但是想携带参数怎么办呢？现在我们有一个场景：带有tabbar的页面A有个选择按钮，点击选择按钮通过navigateTo的方式跳转到选择列表页面B，然后通过点击里面的列表项跳回页面A并且携带相关信息。</p>
+<p>我刚开始是想用setStroge的方式在B页面里将参数存储在本地缓存里，接着使用switchTab跳转到A页面，然后在A页面里获取一下相关的缓存，再设置在页面的data中以便可以改变页面的一些显示内容。A页面里获取缓存的位置我起初是写在onLoad里面，但是我发现在B页面跳回A页面里，A页面的onLoad并不会再次触发。</p>
+<p>我再阅读了一下官方文档，发现好像有个onShow可以使用。于是我获取缓存的位置又写在了onShow里，我又发现，这个页面只会在页面B第一次跳回页面A里被触发，就是如果我想再次选择，第二次从页面B在跳回页面A，就再也触发不了了。这个问题说实话我还在研究具体原因中。</p>
+<p>接着我就试着用wx.navigateBack进行返回而不是switchTab进行跳转回，我发现这回onShow可以一直被触发了。我又觉得，存储在本地缓存的这个方法比较不可取，因为这个缓存如果我不手动清除的话是会一直存在的。因此我把它改成写在 globalData里，通过设置globalData和读取它去获取我要的参数。</p>
+<p>这下仿佛好像皆大欢喜啦，但是我们发现了currentPage这个东西，currentPage是当前的页面栈的实例，它以数组形式按栈的顺序给出，第一个元素为首页，最后一个元素为当前页面。浅显的来说，就是一个个打开并且没有关闭的页面实例按照打开顺序排放成一个数组。</p>
+<p>因此，我们就可以直接在页面A定义一个函数，这个函数的参数就为我们需要在页面B得到的数据data(就是普通的参数),然后在函数里进行对数据的保存之类的操作。如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function handleParam(data)&#123;</div><div class="line">    this.setData(&#123;</div><div class="line">        info:data</div><div class="line">    &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>然后在页面b，通过currentPage获得页面A的实例，即数组的倒数第二个元素，然后就可以直接调用这个实例里的函数，把b页面的data像普通函数调用一样传递给页面a，之后再进行跳转即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var pages = currentPage()</div><div class="line">pageA = pages[pages.length-2]</div><div class="line">pageA.handleParam(data)</div></pre></td></tr></table></figure>
+<h2 id="5-自己的一些小Tip"><a href="#5-自己的一些小Tip" class="headerlink" title="5. 自己的一些小Tip"></a>5. 自己的一些小Tip</h2><h3 id="图片路径"><a href="#图片路径" class="headerlink" title="图片路径"></a>图片路径</h3><p>也不知道是不是自己的原因，我在开发的时候发现，tabbar里的图片配置路径，只能读取本地路径，即图片只能放在本地某个目录下存储。而<image>标签的图片，可以在本地或者是网络路径，就是路径要写全，也要写是http或者https。还有background里的图，只能为网络路径。</image></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wwm.ufor.bid/2017/01/08/weixin-app/" data-id="cixoqokkm0000pcujrx5qtmsd" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信小程序-前端/">微信小程序 前端</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/01/07/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/js实现基础控件效果/">js实现基础控件效果</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端笔记/">前端笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端笔记，js，轮盘抽奖/">前端笔记，js，轮盘抽奖</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序-前端/">微信小程序 前端</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/前端笔记/" style="font-size: 10px;">前端笔记</a> <a href="/tags/前端笔记，js，轮盘抽奖/" style="font-size: 10px;">前端笔记，js，轮盘抽奖</a> <a href="/tags/微信小程序-前端/" style="font-size: 10px;">微信小程序 前端</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/01/08/weixin-app/">微信小程序学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2017/01/07/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/27/e5-88-b6-e4-bd-9c-e8-bd-ac-e7-9b-98-e6-8a-bd-e5-a5-96-e8-a7-a3-e6-9e-90/">制作转盘抽奖解析</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/23/e5-88-b6-e4-bd-9c-e5-bc-b9-e5-87-ba-e5-b1-82-e7-ae-80-e5-8d-95-e4-b8-8b-e6-8b-89-e7-bf-bb-e9-a1-b5-e7-80-91-e5-b8-83-e6-b5-81-e5-b8-83-e5-b1-80-e7-9a-84-e6-80-9d-e8-b7-af/">制作弹出层/简单下拉翻页/瀑布流布局/css3照片墙的思路</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
