@@ -3,14 +3,30 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hexo</title>
+  <title>制作转盘抽奖解析 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://wwm.ufor.bid/index.html">
+  <meta name="description" content="之前没有做过转盘抽奖，在网上搜了相关的资料，看到大部分都是推荐使用JQuery插件awardRotate实现的。但是我又觉得使用单纯的JS去实现应该也不难。于是做了有插件的版本和使用JS 实现的版本。
+一、JS实现首先先上使用JS 实现的代码和效果:
+
+
+根据效果我们可以大体的意识到，其实真正的原理是利用CSS3里transform中的旋转效果（rotate），根据转盘转动一点点改变角度这样的动画">
+<meta property="og:type" content="article">
+<meta property="og:title" content="制作转盘抽奖解析">
+<meta property="og:url" content="http://wwm.ufor.bid/2016/09/27/award-rotate/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="之前没有做过转盘抽奖，在网上搜了相关的资料，看到大部分都是推荐使用JQuery插件awardRotate实现的。但是我又觉得使用单纯的JS去实现应该也不难。于是做了有插件的版本和使用JS 实现的版本。
+一、JS实现首先先上使用JS 实现的代码和效果:
+
+
+根据效果我们可以大体的意识到，其实真正的原理是利用CSS3里transform中的旋转效果（rotate），根据转盘转动一点点改变角度这样的动画">
+<meta property="og:updated_time" content="2017-03-21T13:59:58.356Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="制作转盘抽奖解析">
+<meta name="twitter:description" content="之前没有做过转盘抽奖，在网上搜了相关的资料，看到大部分都是推荐使用JQuery插件awardRotate实现的。但是我又觉得使用单纯的JS去实现应该也不难。于是做了有插件的版本和使用JS 实现的版本。
+一、JS实现首先先上使用JS 实现的代码和效果:
+
+
+根据效果我们可以大体的意识到，其实真正的原理是利用CSS3里transform中的旋转效果（rotate），根据转盘转动一点点改变角度这样的动画">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -59,196 +75,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-weixin-app" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/08/weixin-app/" class="article-date">
-  <time datetime="2017-01-08T07:37:07.000Z" itemprop="datePublished">2017-01-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/08/weixin-app/">微信小程序学习笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近在着手小程序的项目，因为官方文档很多写的比较简略，所以在开发的时候还是踩了许多个坑，也更加了解小程序的一些特点，因此在这里记录一下我的浅薄学习，我的踩坑点以及目前的解决方法吧。</p>
-<h2 id="1-没有cookie"><a href="#1-没有cookie" class="headerlink" title="1. 没有cookie"></a>1. 没有cookie</h2><p>由于之前也没特地关注这一点，所以一直到写登录操作的时候才发现小程序不支持cookie，而我们的登录之类的操作都是使用cookie进行信息携带和保存的。因此为了兼容原来使用cookie的这种模式，我们自定义了wx.request的header,将原先放在cookie里的内容放在header里进行传递。</p>
-<h2 id="2-小程序不允许直接操作Dom"><a href="#2-小程序不允许直接操作Dom" class="headerlink" title="2. 小程序不允许直接操作Dom"></a>2. 小程序不允许直接操作Dom</h2><p>小程序本意是为了让开发者彻底脱离操作DOM,使开发者从操作DOM转向操作数据，因此没有提供像Jquery，或者普通JS直接操作DOM，获取DOM节点，生成DOM节点的方法，也不允许我们做一些类似addClass的动作了，但是我们可以通过数据和页面进行绑定，然后操作数据，改变数据从而改变页面。这也为开发者省去了很多繁琐的DOM操作。</p>
-<h2 id="3-事件参数传递"><a href="#3-事件参数传递" class="headerlink" title="3. 事件参数传递"></a>3. 事件参数传递</h2><p>在小程序里的事件绑定，如点击事件我们可以使用bindtap(会向上冒泡)，或者catchtap（阻止向上冒泡）,比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;view bindtap=&quot;handleClick&quot;&gt;test&lt;/view&gt;</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">handleClick: function(event)&#123;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>此点击的响应事件的参数是event，可以看到这种绑定方式要传参的话是没办法像以前一样使用onclick=”handleClick(‘param’)”这种方法的，好在小程序提供了可以在这个组件自定义data-*属性，接着使用响应事件中的event.currentTarget.dataset或者event.target.dataset获取,如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;view bindtap=&quot;handleClick&quot; data-test=&quot;1&quot;&gt;test&lt;/view&gt;</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">handleClick: function(event)&#123;</div><div class="line">    console.log(event.currentTarget.dataset)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在这里要说一下event.currentTarget和event.target的区别，先看个实例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;view bindtap=&quot;grandParentTap&quot; id=&quot;grandParentTap&quot; data-info=&quot;grandParentTap&quot;&gt;</div><div class="line">    &lt;view catchtap=&quot;parentTap&quot; id=&quot;parentTap&quot; data-info=&quot;parentTap&quot;&gt; </div><div class="line">        &lt;view bindtap=&quot;childTap&quot; id=&quot;childTap&quot; data-info=&quot;childTap&quot;&gt;</div><div class="line">            child</div><div class="line">        &lt;/view&gt;</div><div class="line">    &lt;/view&gt;</div><div class="line">&lt;/view&gt;</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">grandParentTap: function(event)&#123;</div><div class="line">    console.log(event)</div><div class="line">&#125;,</div><div class="line">parentTap: function(event)&#123;</div><div class="line">    console.log(event)</div><div class="line">&#125;,</div><div class="line">childTap: function(event)&#123;</div><div class="line">    console.log(event)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>当我们点击child这个文字时，在控制台打印出来的结果是：</p>
-<p><img src="http://img.aimoge.com/Fmz-A3UdV-3tCfPWj8EHURR-SSsK" alt="点击child最后结果"></p>
-<p>可以看到这边只打出了两个event，因为parentTap是通过catchtap绑定的，所以阻止了冒泡，并没有触发到grandParentTap上。<br>我们展开这两个event对象，可以看到：</p>
-<p><img src="http://img.aimoge.com/Fq2IPclPbtncQipOYsUlyoIVZVrO" alt="展开输出信息"></p>
-<p>首先看到了childTap的event，可以看到currentTarget和target里的dataset，id都是它自己本身的id,和data-info,都为childTap。</p>
-<p>而看到parentTap的event时，我们可以看到currentTarget里的dataset,id是它自己本身的data-info,id,都为parentTap,而它的target显示的确是为childTap的data-info,id，为childTap。</p>
-<p>因此我们可以看出，event对象中的target是事件产生的源头组件，而currentTarget则是当前捕获这个事件的组件。理解清楚这个，对我们是使用target去获取data-*的内容，还是currentTarget去获取是很用帮助的。</p>
-<p>如果我们绑定事件的是整个大的父组件，自定义data也是设置在父组件，但是它包含了很多子组件，当我们点击某个子组件时，虽然能触发父组件的tap事件，但是这时候的target指向的是真正触发事件的子组件，里面的dataset就不是我们要获取的内容了，应该使用currentTarget去获取。</p>
-<h2 id="4-页面跳转及页面传参"><a href="#4-页面跳转及页面传参" class="headerlink" title="4. 页面跳转及页面传参"></a>4. 页面跳转及页面传参</h2><p>小程序的跳转方式用四种：wx.navigateTo(OBJECT)，wx.redirectTo(OBJECT)，wx.switchTab(OBJECT)，wx.navigateBack(OBJECT)。其中如果页面含有tabbar，只能用switchTab跳转到此页面。另外需要注意的是，wx.switchTab(OBJECT)，wx.navigateBack(OBJECT)是无法通过url传递参数的。而另外两种参数传递即普通的url带参方式：参数与路径之间使用?分隔，参数键与参数值用=相连，不同参数用&amp;分隔；如 ‘path?key=value&amp;key2=value2’即可。具体可以看开发文档。</p>
-<p>那我们要是想要通过wx.switchTab或者通过wx.navigateBack跳转但是想携带参数怎么办呢？现在我们有一个场景：带有tabbar的页面A有个选择按钮，点击选择按钮通过navigateTo的方式跳转到选择列表页面B，然后通过点击里面的列表项跳回页面A并且携带相关信息。</p>
-<p>我刚开始是想用setStroge的方式在B页面里将参数存储在本地缓存里，接着使用switchTab跳转到A页面，然后在A页面里获取一下相关的缓存，再设置在页面的data中以便可以改变页面的一些显示内容。A页面里获取缓存的位置我起初是写在onLoad里面，但是我发现在B页面跳回A页面里，A页面的onLoad并不会再次触发。</p>
-<p>我再阅读了一下官方文档，发现好像有个onShow可以使用。于是我获取缓存的位置又写在了onShow里，我又发现，这个页面只会在页面B第一次跳回页面A里被触发，就是如果我想再次选择，第二次从页面B在跳回页面A，就再也触发不了了。这个问题说实话我还在研究具体原因中。</p>
-<p>接着我就试着用wx.navigateBack进行返回而不是switchTab进行跳转回，我发现这回onShow可以一直被触发了。我又觉得，存储在本地缓存的这个方法比较不可取，因为这个缓存如果我不手动清除的话是会一直存在的。因此我把它改成写在 globalData里，通过设置globalData和读取它去获取我要的参数。</p>
-<p>这下仿佛好像皆大欢喜啦，但是我们发现了currentPage这个东西，currentPage是当前的页面栈的实例，它以数组形式按栈的顺序给出，第一个元素为首页，最后一个元素为当前页面。浅显的来说，就是一个个打开并且没有关闭的页面实例按照打开顺序排放成一个数组。有了这个，我们就可以获取数组里的任意一个实例并可以调用里面的函数，然后进行传参之类的动作了。</p>
-<p>因此，我们就可以直接在页面A定义一个函数，这个函数的参数就为我们需要在页面B得到的数据data(就是普通的参数),然后在函数里进行对数据的保存之类的操作。如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function handleParam(data)&#123;</div><div class="line">    this.setData(&#123;</div><div class="line">        info:data</div><div class="line">    &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>然后在页面b，通过currentPage获得页面A的实例，即数组的倒数第二个元素，然后就可以直接调用这个实例里的函数，把b页面的data像普通函数调用一样传递给页面a，之后再进行跳转即可。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var pages = currentPage()</div><div class="line">pageA = pages[pages.length-2]</div><div class="line">pageA.handleParam(data)</div></pre></td></tr></table></figure>
-<h2 id="5-自己的一些小Tip"><a href="#5-自己的一些小Tip" class="headerlink" title="5. 自己的一些小Tip"></a>5. 自己的一些小Tip</h2><h3 id="图片路径"><a href="#图片路径" class="headerlink" title="图片路径"></a>图片路径</h3><p>也不知道是不是自己的原因，我在开发的时候发现，tabbar里的图片配置路径，只能读取本地路径，即图片只能放在本地某个目录下存储。而<image>标签的图片，可以在本地或者是网络路径，就是路径要写全，也要写是http或者https。还有background里的图，只能为网络路径。</image></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://wwm.ufor.bid/2017/01/08/weixin-app/" data-id="cj0jn79si000ijsuj4wtuxqj5" class="article-share-link">Delen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信小程序-前端/">微信小程序 前端</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/07/hello-world/" class="article-date">
-  <time datetime="2017-01-07T14:31:02.197Z" itemprop="datePublished">2017-01-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/07/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://wwm.ufor.bid/2017/01/07/hello-world/" data-id="cj0jn79si000djsujpbqnsxdl" class="article-share-link">Delen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-js-note" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/10/23/js-note/" class="article-date">
-  <time datetime="2016-10-23T13:19:41.000Z" itemprop="datePublished">2016-10-23</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/js实现基础控件效果/">js实现基础控件效果</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/23/js-note/">制作弹出层/简单下拉翻页/瀑布流布局/照片墙的思路</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="一、弹出层"><a href="#一、弹出层" class="headerlink" title="一、弹出层"></a>一、弹出层</h2><p><strong>设计思路为：</strong></p>
-<ol>
-<li>定义一个空的div作为遮罩的那层蒙版。颜色一般为黑色或灰色，设置透明度。宽高均为100%；定位可以为绝对定位或者fixed定位。有一点尤其重要即设置其z-index一定要比页面中普通元素高。才能不让底下非弹出层元素在弹出层弹出时被误点。<br>html代码如：<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"layer"</span> <span class="attr">id</span>=<span class="string">"layer"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>css样式如：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.layer</span> &#123; <span class="attribute">display</span>: none; <span class="attribute">position</span>: fixed; <span class="attribute">width</span>: <span class="number">100%</span>; <span class="attribute">height</span>: <span class="number">100%</span>;<span class="attribute">background</span>: <span class="built_in">rgba</span>(0, 0, 0, 0.73); <span class="attribute">top</span>: <span class="number">0</span>; <span class="attribute">left</span>: <span class="number">0</span>; <span class="attribute">z-index</span>: <span class="number">30</span>;&#125;</div></pre></td></tr></table></figure></p>
-<ol>
-<li><p>定义弹出层。弹出层根据需要自定义内容。弹出层的定位可以为绝对定位或者fixed定位。用fix定位时可以避免拖动纵向滚动条时，弹出层被滚走。弹出层的z-index要和蒙版相同或者比蒙版还高。</p>
-</li>
-<li><p>JS代码，点击元素将蒙版和弹出层同时设置display为可见（block）的属性，当点击蒙版时将蒙版和弹出层同时设置display为不可见（none）的属性。若要实现弹出层弹出时，底部页面的元素不能被滚动，则需设置html,body的overflow属性为hidden.当弹出层被隐藏时，再将其恢复到原先的值。示例代码如：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">openDialog</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    $(<span class="string">'#layer, #dialog'</span>).show();</div><div class="line">    $(<span class="string">'html,body'</span>).css(<span class="string">'overflow'</span>,<span class="string">'hidden'</span>);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">closeDialog</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    $(<span class="string">'#layer, #dialog'</span>).hide();</div><div class="line">    $(<span class="string">'html,body'</span>).css(<span class="string">'overflow'</span>,<span class="string">'auto'</span>);</div><div class="line">&#125;</div><div class="line">$(<span class="string">'.open-dialog'</span>).on(<span class="string">'click'</span>,openDialog);</div><div class="line">$(<span class="string">'#layer'</span>).on(<span class="string">'click'</span>,closeDialog);</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<hr>
-<h2 id="二、简单下拉翻页"><a href="#二、简单下拉翻页" class="headerlink" title="二、简单下拉翻页"></a>二、简单下拉翻页</h2><p><strong>设计思路为：</strong></p>
-<ol>
-<li>首先想到的是绑定window的scroll事件，通过判断被滚走的高度（scrollTop）与浏览器窗口的高度相加是否等于整个滚动视图的高度由此判断是否滑动到底部，触发了底部跳转。具体代码如下:<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$(<span class="built_in">window</span>).on(<span class="string">'scroll'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> scrollTop = <span class="built_in">document</span>.body.scrollTop;</div><div class="line">    <span class="keyword">var</span> scrollHeight = <span class="built_in">document</span>.body.scrollHeight;</div><div class="line">    <span class="keyword">var</span> windowHeight =<span class="built_in">document</span>.body.clientHeight;</div><div class="line">    <span class="keyword">if</span> (scrollTop == <span class="number">0</span>) &#123;</div><div class="line">        <span class="built_in">window</span>.location.href=<span class="string">"babyshow4.html"</span>;</div><div class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span> (scrollTop + windowHeight == scrollHeight) &#123;</div><div class="line">        <span class="built_in">window</span>.location.href=<span class="string">"babyshow4.html"</span>;</div><div class="line">    &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>2.但是后来发现由于这是要绑定滚动事件的，但是在手机端内容仅有一页无法出现滚动条的情况下，即当滚动高度scrollTop为0的情况下无法判断滑动底部进行跳转。于是借助了手机端固有的touchstart和touchend事件，去获取touchStart触屏时手在页面上y轴的位置startY和touchEnd即手离开页面时y轴的的位置endY，通过endY-startY<0的方式去判断上拉的这个操作，然后再判断scrolltop为0和不为0滑到底部的情况去进行上拉跳转。具体代码为： <figure="" class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">load</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">document</span>.addEventListener(<span class="string">'touchstart'</span>,touchStart,<span class="literal">false</span>);</div><div class="line">    <span class="built_in">document</span>.addEventListener(<span class="string">'touchend'</span>,touchEnd,<span class="literal">false</span>);</div><div class="line">    <span class="keyword">var</span> startY,endY;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">touchStart</span>(<span class="params">event</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> touch = event.touches[<span class="number">0</span>];</div><div class="line">        startY = touch.pageY;</div><div class="line">    &#125;</div><div class="line">        <span class="function"><span class="keyword">function</span> <span class="title">touchEnd</span>(<span class="params">event</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> touch = event.changedTouches[<span class="number">0</span>];</div><div class="line">        endY = touch.pageY;</div><div class="line">        setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">          </div><div class="line">           <span class="keyword">if</span> (endY - startY &lt;= <span class="number">0</span>) &#123;</div><div class="line">               <span class="keyword">var</span> scrollTop = <span class="built_in">document</span>.body.scrollTop;</div><div class="line">               <span class="keyword">var</span> scrollHeight = <span class="built_in">document</span>.body.scrollHeight;</div><div class="line">   　　        <span class="keyword">var</span> windowHeight =<span class="built_in">document</span>.body.clientHeight;</div><div class="line">               <span class="keyword">if</span> (scrollTop == <span class="number">0</span>) &#123;</div><div class="line">                    <span class="built_in">window</span>.location.href=<span class="string">"babyshow4.html"</span>;</div><div class="line">               &#125;<span class="keyword">else</span> <span class="keyword">if</span> (scrollTop + windowHeight == scrollHeight) &#123;</div><div class="line">                     <span class="built_in">window</span>.location.href=<span class="string">"babyshow4.html"</span>;</div><div class="line">               &#125;</div><div class="line">            &#125;</div><div class="line">       &#125;,<span class="number">0</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'load'</span>,load,<span class="literal">false</span>);</div></pre></td></tr></table></0的方式去判断上拉的这个操作，然后再判断scrolltop为0和不为0滑到底部的情况去进行上拉跳转。具体代码为：></p>
-<p><strong>注：此方法有局限，局限在页面为手机端页面且仅存在图片、触摸操作仅为下拉翻页的情况下使用。</strong></p>
-<hr>
-<h2 id="三、瀑布流布局"><a href="#三、瀑布流布局" class="headerlink" title="三、瀑布流布局"></a>三、瀑布流布局</h2><p><strong>JS设计思路为：</strong></p>
-<ol>
-<li>所有数据块的宽度相等，高度不等。</li>
-<li>除了第一行元素的排列不用绝对定位之外，其他的都要绝对定位，<br>并且每一个都要动态的定位在所有列中最短即高度最小的那一列后面：<br>具体的实现方法是：定义一个存放所有列的高度的数组。<br>然后找出高度数值最小的那一列，将下一个要定位的数据块定位在那一列之末。<br>即定位的top为最小的列的数值，定位的left为那一列的列数索引乘上每个盒子的宽度，最后更新高度数组的数据。</li>
-<li>当页面开始滚动时，滚动到一定的位置开始加载新的数据块，创建新的DOM节点。达到瀑布流无限滚动<br>实现方法为：当最后一块数据块的中心与父盒子的顶部的距离小于被父盒子被滚走的高度加上浏览器窗口的高度时，开始加载数据块。通俗来说，就是当露出最后一块中心时就可以加载数据块并将新的内容进行布局了。</li>
-</ol>
-<h2 id="四、CSS3简易照片墙"><a href="#四、CSS3简易照片墙" class="headerlink" title="四、CSS3简易照片墙"></a>四、CSS3简易照片墙</h2><p>先上重要代码：<br>HTML代码：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"images/1.jpeg"</span> <span class="attr">class</span>=<span class="string">"img img1"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"images/2.jpeg"</span> <span class="attr">alt</span>=<span class="string">""</span> <span class="attr">class</span>=<span class="string">"img img2"</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!--下面是其他图片....--&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>CSS代码为：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.container</span>&#123;</div><div class="line">    <span class="attribute">position</span>: relative;</div><div class="line">    <span class="attribute">width</span>: <span class="number">1000px</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">600px</span>;</div><div class="line">    <span class="attribute">margin</span>:<span class="number">100px</span> auto;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.container</span> <span class="selector-class">.img</span>&#123;</div><div class="line">    <span class="attribute">position</span>: absolute;</div><div class="line">    <span class="attribute">width</span>: <span class="number">360px</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">240px</span>;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">10px</span> <span class="number">10px</span> <span class="number">15px</span>;</div><div class="line">    <span class="attribute">left</span>: <span class="number">50%</span>; </div><div class="line">    <span class="attribute">top</span>: <span class="number">50%</span>; </div><div class="line">    <span class="attribute">margin-left</span>: -<span class="number">180px</span>;</div><div class="line">    <span class="attribute">margin-top</span>: -<span class="number">120px</span>;</div><div class="line">    <span class="attribute">background</span>: <span class="number">#fff</span>;</div><div class="line">    <span class="attribute">border</span>:<span class="number">1px</span> solid <span class="number">#ddd</span>;</div><div class="line">    <span class="attribute">box-shadow</span>:<span class="number">2px</span> <span class="number">2px</span> <span class="number">10px</span> <span class="built_in">rgba</span>(0, 0, 0, 0.4);</div><div class="line">    <span class="attribute">transition</span>: all .<span class="number">4s</span> ease-in;</div><div class="line">    <span class="attribute">-webkit-transition</span>: all .<span class="number">4s</span> ease-in;</div><div class="line">    <span class="attribute">-moz-transition</span>: all .<span class="number">4s</span> ease-in;</div><div class="line"> &#125;</div><div class="line"> <span class="selector-class">.container</span> <span class="selector-class">.img</span><span class="selector-pseudo">:hover</span>&#123;</div><div class="line">     <span class="attribute">z-index</span>: <span class="number">99</span>;</div><div class="line">     <span class="attribute">box-shadow</span>: <span class="number">20px</span> <span class="number">20px</span> <span class="number">30px</span> <span class="built_in">rgba</span>(0,0,0,0.4);</div><div class="line">     <span class="attribute">transform</span>: <span class="built_in">translate</span>(0,0) <span class="built_in">rotate</span>(0deg) <span class="built_in">scale</span>(1.2);</div><div class="line">     <span class="attribute">-webkit-transform</span>: <span class="built_in">translate</span>(0,0) <span class="built_in">rotate</span>(0deg) <span class="built_in">scale</span>(1.2);</div><div class="line">     <span class="attribute">-moz-transform</span>: <span class="built_in">translate</span>(0,0) <span class="built_in">rotate</span>(0deg) <span class="built_in">scale</span>(1.2);</div><div class="line"> &#125;</div><div class="line"> <span class="selector-class">.img1</span>&#123;</div><div class="line">     <span class="attribute">-webkit-transform</span>: <span class="built_in">translate</span>(50px,-150px) <span class="built_in">rotate</span>(-10deg); </div><div class="line">     <span class="attribute">-moz-transform</span>: <span class="built_in">translate</span>(50px,-150px) <span class="built_in">rotate</span>(-10deg); </div><div class="line">     <span class="attribute">transform</span>: <span class="built_in">translate</span>(50px,-150px) <span class="built_in">rotate</span>(-10deg); </div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
-<p>1、照片墙所有的照片被一个容器包裹，此容器相对定位，每张照片绝对定位。<br>2、所有的照片都仅有初始位置和初始角度不同，其余的都相同。相同的写在同个class中，给每张照片定义不同的className来设置不同的样式。所有照片移上去的动画效果等也是相同的（hover）。<strong>在此要特别需要注意一点，通过translate(0,0);这种方式去设置每个照片的位置而不是left,top,right,bottom，可以开启动画效果加速，防止改变传统的left,top值中引起的一些抖动和不流畅 。</strong></p>
-<p>3、可以通过box-shadow设置阴影效果，使照片更为立体。<br><code>box-shadow: h-shadow v-shadow blur spread color inset;</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt; h-shadow 必需。水平阴影的位置。允许负值。</div><div class="line">&gt; v-shadow 必需。垂直阴影的位置。允许负值。 </div><div class="line">&gt; blur 可选。模糊距离。 </div><div class="line">&gt; spread 可选。阴影的尺寸。 </div><div class="line">&gt; color 可选。阴影的颜色。</div><div class="line">&gt; inset 可选。将外部阴影 (outset) 改为内部阴影。</div></pre></td></tr></table></figure></p>
-<p>4、通过transform去改变照片的缩放大小和旋转角度。例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">transform：scale(1.5) rotate(45deg)</div><div class="line">/*放大1.5倍，顺时针旋转45度*/</div><div class="line">/*rotate（Xdeg），顺时针X为+，逆时针X为-*/</div></pre></td></tr></table></figure></p>
-<p>5、使用transtion来实现动画效果。transtion过渡效果会出现在属性变化的时候。<br><code>transition: property duration timing-function delay;</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; transition-property 规定设置过渡效果的 CSS 属性的名称。如果是all，就代表所有属性(必须)</div><div class="line">&gt; transition-duration 规定完成过渡效果需要多少秒或毫秒。(必须，为0则没有过渡效果)</div><div class="line">&gt; transition-timing-function 规定速度效果的速度曲线。</div><div class="line">&gt; transition-delay 定义过渡效果何时开始。(没有则是立即开始)</div></pre></td></tr></table></figure></p>
-<p>6、transform和transtion都需要注意浏览器兼容性：-webkit-、-moz-<br>7、z-index属性设置照片上下层叠放，其中img:hover里的z-index值要比img中大</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://wwm.ufor.bid/2016/10/23/js-note/" data-id="cj0jn79si000gjsuj8cwwxm39" class="article-share-link">Delen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端笔记，js，设计思路/">前端笔记，js，设计思路</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-award-rotate" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-award-rotate" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/09/27/award-rotate/" class="article-date">
   <time datetime="2016-09-27T02:33:17.000Z" itemprop="datePublished">2016-09-27</time>
@@ -265,8 +92,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/27/award-rotate/">制作转盘抽奖解析</a>
+    <h1 class="article-title" itemprop="name">
+      制作转盘抽奖解析
     </h1>
   
 
@@ -326,10 +153,23 @@
     </footer>
   </div>
   
-</article>
-
+    
+<nav id="article-nav">
+  
+    <a href="/2016/10/23/js-note/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Nieuwer</strong>
+      <div class="article-nav-title">
+        
+          制作弹出层/简单下拉翻页/瀑布流布局/照片墙的思路
+        
+      </div>
+    </a>
+  
+  
+</nav>
 
   
+</article>
 
 </section>
         
